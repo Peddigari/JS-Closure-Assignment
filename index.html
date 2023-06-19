@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px;
+            background-image: linear-gradient(coral,tomato);
+        }
+    </style>
+
+</head>
+<body>
+    <h1 style="color:blueviolet; text-align: center; font-weight: bolder;">CLOSURE</h1><hr>
+    <pre>
+        Q1.function counter(){
+            var counter = 0;
+        
+            function IncreaseCounter() {
+                return counter += 1;
+            };
+        
+            return IncreaseCounter;
+        }
+        
+        var counter = counter();
+        alert(counter());
+        alert(counter());
+        alert(counter());
+        alert(counter());
+    </pre>
+    <pre>
+        Ans:1
+            2
+            3
+            4
+    </pre><hr>
+    <pre>
+        Q2.let count = 0;
+        (function () {
+          if (count === 0) {
+            let count = 1;
+            console.log(count); // What is logged?
+          }
+          console.log(count); // What is logged?
+        })();
+    </pre>
+    <pre>
+        Ans:1
+            0 
+    </pre><hr>
+    <pre>
+        Q3.for (var i = 0; i < 3; i++) {
+            setTimeout(function log() {
+              console.log(i); // What is logged?
+            }, 1000);
+          }
+    </pre>
+    <pre>
+        Ans:3
+            3
+            3    
+    </pre><hr>
+    <p>Q4.Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.
+    </p>
+    <pre>
+        function outerFunction(length){
+            function innerFunction(breadth){
+                console.log(`Area of rectangle: ${length*breadth}`);
+            }
+            innerFunction(3);
+        }
+        outerFunction(2);
+    </pre>
+    <pre>
+        OUTPUT:
+        Area of rectangle:6
+    </pre><hr>
+    <p>Q5.Take a variable in outer function and create an inner function to increase the counter every time it is called</p>
+    <pre>
+        function outerFunc(num){
+            console.log(`Value before inner function is called is : ${num}`);
+            function innerFunc(){
+                num++
+                console.log(`Value after inner function is called is: ${num}`);
+            }
+            innerFunc();
+        }
+        outerFunc(1);
+    </pre>
+    <pre>
+        OUTPUT:
+        Value before inner function is called is :1
+        Value after inner function is called is:2
+    </pre><hr>
+    <pre>
+        Q6."Print Output
+
+        var a = 12;
+        (function () {
+          alert(a);
+        })();"
+    </pre>
+    <p>Ans:12</p><hr>
+    <pre>
+        Q7."var a = 10;
+        var x = (function () {
+          var a = 12;
+          return function () {
+            alert(a);
+          };
+        })();
+        x();"
+    </pre>
+    <p>ANS:12</p><hr>
+    <pre>Q8.var globalVar = "xyz";
+
+        (function outerFunc(outerArg) {
+            var outerVar = 'a';
+            
+            (function innerFunc(innerArg) {
+            var innerVar = 'b';
+            
+            console.log(
+                "outerArg =" + outerArg + "\n" +
+                "innerArg = " + innerArg + "\n" +
+                "outerVar = " + outerVar + "\n" +
+                "innerVar = " + innerVar + "\n" +
+                "globalVar = " + globalVar);
+            
+            })(456);
+        })(123);</pre>
+        <pre>ANS:
+            outerArg =123
+            innerArg = 456
+            outerVar = a
+            innerVar = b
+            globalVar = xyz
+        </pre>
+</body>
+</html>
